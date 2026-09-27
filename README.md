@@ -9,6 +9,9 @@ you can see them, and timed so you can feel the difference.
 | `big_o.py` | [Big-O, measured on your laptop](https://chekh.dev/writing/big-o-measured-on-your-laptop/) | Times five operations, one per complexity class, as the input doubles ten times (about 2 min) |
 | `binary_search.py` | [Binary search, and the off-by-one everyone writes](https://chekh.dev/writing/binary-search-and-the-off-by-one-everyone-writes/) | Two correct searches, three classic bugs, and a step-by-step trace |
 | `sorting.py` | [Sorting, from bubble sort to Timsort](https://chekh.dev/writing/sorting-from-bubble-sort-to-timsort/) | Four sorts traced on eight numbers, then timed against `sorted()` (about 2 min) |
+| `hash_table.py` | [How a hash table works, and why dict lookups are fast](https://chekh.dev/writing/how-a-hash-table-works-and-why-dict-lookups-are-fast/) | A sixty-line hash map timed against a list scan and `dict`, then with resizing off and with bad hash functions (about 1 min) |
+| `recursion.py` | [Recursion, drawn](https://chekh.dev/writing/recursion-drawn/) | The call stack for factorial, the call tree for Fibonacci, naive against memoised, and the recursion limit |
+| `graphs.py` | [Graphs: BFS and DFS, traced step by step](https://chekh.dev/writing/graphs-bfs-and-dfs-traced-step-by-step/) | BFS and DFS traced on a maze, then compared on 300 random mazes |
 
 ## Run it
 
@@ -30,10 +33,11 @@ times as long on any computer.
 
 ## What is in here
 
-- `binary_search.py`, `sorting.py` — the implementations, with the traces they draw
+- `binary_search.py`, `sorting.py`, `hash_table.py`, `recursion.py`, `graphs.py` — the
+  implementations, with the traces and diagrams they draw
 - `big_o.py` — the timing harness for the complexity article
-- `tests/` — pytest suites: each algorithm against a plain scan or `sorted()`, plus one
-  test per classic bug that shows how it fails
+- `tests/` — pytest suites: each algorithm against a plain scan, `sorted()`, a real
+  `dict` or every possible path, plus one test per classic bug that shows how it fails
 - `_common.py` — shared setup: fonts, chart style, a careful timer, where charts go
 - `paper.mplstyle`, `fonts/` — the site's chart style and typeface (Lora, SIL Open Font
   License)
@@ -47,6 +51,11 @@ times as long on any computer.
   `tests/test_binary_search.py`
 - `big_o.py` — add an operation to `OPERATIONS` with a setup function, and its line
   appears on the chart with its measured slope
+- `hash_table.py` — pass your own `hash_function=` to `HashMap` and see what it does to
+  the chain lengths; change the 0.75 in `put` and rerun the load-factor chart
+- `recursion.py` — add a function to `compute()` and its call count joins the table
+- `graphs.py` — edit `MAZE` (keep one `S` and one `G`) and both traces redraw; change
+  the neighbour order in `neighbours()` and watch DFS take a different route
 
 ## Licence
 
