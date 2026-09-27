@@ -12,6 +12,9 @@ you can see them, and timed so you can feel the difference.
 | `hash_table.py` | [How a hash table works, and why dict lookups are fast](https://chekh.dev/writing/how-a-hash-table-works-and-why-dict-lookups-are-fast/) | A sixty-line hash map timed against a list scan and `dict`, then with resizing off and with bad hash functions (about 1 min) |
 | `recursion.py` | [Recursion, drawn](https://chekh.dev/writing/recursion-drawn/) | The call stack for factorial, the call tree for Fibonacci, naive against memoised, and the recursion limit |
 | `graphs.py` | [Graphs: BFS and DFS, traced step by step](https://chekh.dev/writing/graphs-bfs-and-dfs-traced-step-by-step/) | BFS and DFS traced on a maze, then compared on 300 random mazes |
+| `heaps.py` | [Heaps and priority queues: the array trick behind heapq](https://chekh.dev/writing/heaps-and-priority-queues-the-array-trick-behind-heapq/) | A binary heap traced as it pushes and pops, its comparisons counted two ways, and four ways to find the ten largest of a million numbers (about 1 min) |
+| `shortest_paths.py` | [Dijkstra and A*, traced on a weighted grid](https://chekh.dev/writing/dijkstra-and-a-star-traced-on-a-weighted-grid/) | BFS, Dijkstra, A* and greedy search traced on a map with forest, run on 200 random maps, and Dijkstra timed with and without a heap (about 1 min) |
+| `dynamic_programming.py` | [Dynamic programming: from recursion to a table](https://chekh.dev/writing/dynamic-programming-from-recursion-to-a-table/) | Coin change and edit distance, each as a plain recursion, with a cache, and as a table (about 5 min, most of it the plain recursions) |
 
 ## Run it
 
@@ -33,11 +36,13 @@ times as long on any computer.
 
 ## What is in here
 
-- `binary_search.py`, `sorting.py`, `hash_table.py`, `recursion.py`, `graphs.py` — the
-  implementations, with the traces and diagrams they draw
+- `binary_search.py`, `sorting.py`, `hash_table.py`, `recursion.py`, `graphs.py`,
+  `heaps.py`, `shortest_paths.py`, `dynamic_programming.py` — the implementations, with
+  the traces and diagrams they draw
 - `big_o.py` — the timing harness for the complexity article
-- `tests/` — pytest suites: each algorithm against a plain scan, `sorted()`, a real
-  `dict` or every possible path, plus one test per classic bug that shows how it fails
+- `tests/` — pytest suites: each algorithm against a plain scan, `sorted()`, `heapq`, a
+  real `dict`, every possible path, Bellman-Ford or brute force, plus one test per
+  classic bug that shows how it fails
 - `_common.py` — shared setup: fonts, chart style, a careful timer, where charts go
 - `paper.mplstyle`, `fonts/` — the site's chart style and typeface (Lora, SIL Open Font
   License)
@@ -56,6 +61,11 @@ times as long on any computer.
 - `recursion.py` — add a function to `compute()` and its call count joins the table
 - `graphs.py` — edit `MAZE` (keep one `S` and one `G`) and both traces redraw; change
   the neighbour order in `neighbours()` and watch DFS take a different route
+- `heaps.py` — add a method to `TOP_K` and it joins the timing chart
+- `shortest_paths.py` — edit `MAP` or the costs in `Grid.COSTS`; multiply the guess in
+  `a_star` by 2 and watch it expand fewer cells and sometimes miss the cheapest path
+- `dynamic_programming.py` — change `COINS` and see for which amounts the greedy answer
+  goes wrong; the tests check every version against brute force
 
 ## Licence
 
