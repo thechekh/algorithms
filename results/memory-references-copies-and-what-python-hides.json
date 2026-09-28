@@ -1,0 +1,243 @@
+{
+ "machine": "Python 3.12.6 on Windows, 12 logical CPUs",
+ "two names": {
+  "a": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "b": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "c": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "a is b": true,
+  "a is c": false,
+  "a[0] is c[0]": true
+ },
+ "rows trap": {
+  "shared": [
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    1,
+    0,
+    0
+   ]
+  ],
+  "separate": [
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ],
+   [
+    0,
+    0,
+    0
+   ]
+  ],
+  "rows in shared": 1,
+  "rows in separate": 3
+ },
+ "default argument": {
+  "append_to": [
+   [
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    1,
+    2,
+    3
+   ]
+  ],
+  "append_to_fixed": [
+   [
+    1
+   ],
+   [
+    2
+   ],
+   [
+    3
+   ]
+  ]
+ },
+ "arguments": {
+  "after add_item": [
+   "old",
+   "new"
+  ],
+  "after replace_items": [
+   "old",
+   "new"
+  ]
+ },
+ "tuple holding a list": {
+  "pair": "([1, 2, 3], 'label')",
+  "hash(pair)": "unhashable type: 'list'"
+ },
+ "copies": {
+  "original": [
+   [
+    1,
+    2,
+    99
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "shallow": [
+   [
+    1,
+    2,
+    99
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "deep": [
+   [
+    1,
+    2
+   ],
+   [
+    3,
+    4
+   ]
+  ],
+  "shallow shares rows": true,
+  "deep shares rows": false
+ },
+ "refcounts": [
+  [
+   "obj = []",
+   2
+  ],
+  [
+   "alias = obj",
+   3
+  ],
+  [
+   "box = [obj]",
+   4
+  ],
+  [
+   "del alias",
+   3
+  ],
+  [
+   "box.clear()",
+   2
+  ]
+ ],
+ "hidden": {
+  "sys.getrefcount(None)": 4294967295,
+  "sys.getrefcount(1)": 4294967295,
+  "int('256') is int('256')": true,
+  "int('257') is int('257')": false,
+  "int('257') == int('257')": true
+ },
+ "lifetimes": {
+  "after del, no cycle": [
+   "single freed"
+  ],
+  "after del, cycle": [
+   "single freed"
+  ],
+  "after gc.collect()": [
+   "single freed",
+   "cycle freed"
+  ],
+  "gc.collect() returned": 3
+ },
+ "sizes": {
+  "1,000 numbers in a list": {
+   "sys.getsizeof": 8856,
+   "deep_size": 36856,
+   "tracemalloc": 40800
+  },
+  "1,000 short strings in a list": {
+   "sys.getsizeof": 8856,
+   "deep_size": 59856,
+   "tracemalloc": 59856
+  },
+  "a dict of 1,000 strings to numbers": {
+   "sys.getsizeof": 26032,
+   "deep_size": 105032,
+   "tracemalloc": 109152
+  },
+  "1,000 rows of 10 numbers": {
+   "sys.getsizeof": 8856,
+   "deep_size": 472856,
+   "tracemalloc": 512744
+  }
+ },
+ "copy sizes": [
+  10,
+  100,
+  1000,
+  10000,
+  100000
+ ],
+ "copy timings": {
+  "list(grid)": [
+   1.2078227996925595e-08,
+   3.3842430113839582e-09,
+   2.173812866157476e-09,
+   2.5341845702797627e-09,
+   4.1299062502275776e-09
+  ],
+  "[row[:] for row in grid]": [
+   1.080963134780788e-07,
+   9.732653809102487e-08,
+   1.7760019531465333e-07,
+   2.7611312502813236e-07,
+   4.954239999642595e-07
+  ],
+  "copy.deepcopy(grid)": [
+   3.44066894513162e-06,
+   3.290656250101165e-06,
+   3.425281250201806e-06,
+   3.458725000018603e-06,
+   4.114260999995167e-06
+  ],
+  "pickle round trip": [
+   5.455212402249998e-07,
+   5.251503906578136e-07,
+   6.130593750413027e-07,
+   7.585124999422988e-07,
+   9.432469999592285e-07
+  ]
+ }
+}

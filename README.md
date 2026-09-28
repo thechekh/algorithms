@@ -18,6 +18,8 @@ you can see them, and timed so you can feel the difference.
 | `arrays_and_lists.py` | [Arrays and linked lists: what "fast" depends on](https://chekh.dev/writing/arrays-and-linked-lists-what-fast-depends-on/) | A linked list timed against `list` and `deque` on four jobs, the memory each uses per item, how a list grows, and one sum in two memory orders (about 2 min) |
 | `stacks_and_queues.py` | [Stacks and queues, and the call stack every program runs on](https://chekh.dev/writing/stacks-and-queues-and-the-call-stack/) | A bracket checker and a postfix calculator traced, four queues timed, and a structure 100,000 levels deep walked by recursion and by a loop with a stack (about 1 min) |
 | `trees.py` | [Binary search trees, balance, and why databases use B-trees](https://chekh.dev/writing/binary-search-trees-balance-and-why-databases-use-b-trees/) | A plain binary search tree, an AVL tree and a B-tree measured up to a million keys, then SQLite with and without an index, its depth read from the database file (about 2 min) |
+| `bits_and_bytes.py` | [Bits, bytes and numbers: what a computer actually stores](https://chekh.dev/writing/bits-bytes-and-numbers-what-a-computer-actually-stores/) | Two's complement, 64-bit floats taken apart, the gaps between floats, 0.1 added ten million times six ways, and a UTF-8 encoder written by hand (a few seconds) |
+| `references_and_copies.py` | [Memory: references, copies and what Python hides](https://chekh.dev/writing/memory-references-copies-and-what-python-hides/) | Names and objects, the list-of-lists trap, shallow and deep copies timed, what `sys.getsizeof` leaves out, and reference counting against the cycle collector (about ten seconds) |
 
 ## Run it
 
@@ -41,13 +43,14 @@ times as long on any computer.
 
 - `binary_search.py`, `sorting.py`, `hash_table.py`, `recursion.py`, `graphs.py`,
   `heaps.py`, `shortest_paths.py`, `dynamic_programming.py`, `arrays_and_lists.py`,
-  `stacks_and_queues.py`, `trees.py` — the implementations, with the traces and
-  diagrams they draw
+  `stacks_and_queues.py`, `trees.py`, `bits_and_bytes.py`, `references_and_copies.py` —
+  the implementations, with the traces and diagrams they draw
 - `big_o.py` — the timing harness for the complexity article
 - `tests/` — pytest suites: each algorithm against a plain scan, `sorted()`, `heapq`, a
   real `dict`, a Python list or set, Python's own arithmetic, every possible path,
   Bellman-Ford or brute force, plus one test per classic bug that shows how it fails,
-  and the SQLite depth reader against real database files
+  the SQLite depth reader against real database files, and the hand-written UTF-8
+  encoder against Python's on every code point
 - `_common.py` — shared setup: fonts, chart style, a careful timer, where charts go
 - `paper.mplstyle`, `fonts/` — the site's chart style and typeface (Lora, SIL Open Font
   License)
@@ -79,6 +82,12 @@ times as long on any computer.
 - `trees.py` — change the `t` passed to `BTree` and watch the height and the nodes
   visited change; raise `rows` in `sqlite_demo` and find where the index grows a fourth
   level
+- `bits_and_bytes.py` — add a character to `CHARACTERS` and its UTF-8 bits join the
+  output; change the 0.1 in `add_tenths` to 0.5, a number a float stores exactly, and
+  see which ways of adding stop drifting
+- `references_and_copies.py` — add a copier to `COPIERS`, such as
+  `json.loads(json.dumps(grid))`, and it joins the timing chart and the depth test; add
+  a structure to `BUILDERS` and see how far `sys.getsizeof` undercounts it
 
 ## Licence
 
