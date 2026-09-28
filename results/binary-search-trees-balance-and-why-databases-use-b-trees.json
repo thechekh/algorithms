@@ -1,0 +1,92 @@
+{
+ "machine": "Python 3.12.6 on Windows, 12 logical CPUs",
+ "sqlite_version": "3.45.3",
+ "heights": {
+  "sizes": [
+   100,
+   1000,
+   10000,
+   100000,
+   1000000
+  ],
+  "bst_random": [
+   12,
+   20,
+   32,
+   40,
+   51
+  ],
+  "avl_random": [
+   8,
+   12,
+   16,
+   20,
+   24
+  ],
+  "avl_sorted": [
+   7,
+   10,
+   14,
+   17,
+   20
+  ],
+  "btree": [
+   1,
+   2,
+   2,
+   3,
+   4
+  ],
+  "bst_sorted_sizes": [
+   10,
+   100,
+   1000,
+   3000
+  ],
+  "bst_sorted": [
+   10,
+   100,
+   1000,
+   3000
+  ]
+ },
+ "lookups": {
+  "binary search tree, random order": {
+   "mean_visits": 25.2506,
+   "max_visits": 46,
+   "seconds_per_lookup": 2.780094999980065e-06
+  },
+  "AVL tree": {
+   "mean_visits": 19.30245,
+   "max_visits": 24,
+   "seconds_per_lookup": 2.1328850001737008e-06
+  },
+  "B-tree, up to 127 keys a node": {
+   "mean_visits": 3.98835,
+   "max_visits": 4,
+   "seconds_per_lookup": 1.4096499999141089e-06
+  },
+  "B-tree, up to 7 keys a node": {
+   "mean_visits": 8.7768,
+   "max_visits": 9,
+   "seconds_per_lookup": 2.7869100002135385e-06
+  }
+ },
+ "sqlite": {
+  "rows": 1000000,
+  "page_size": 4096,
+  "plan_without_index": [
+   "SCAN users"
+  ],
+  "seconds_without_index": 0.08210860999970464,
+  "index_pages": 7875,
+  "entries_per_index_page": 126.98412698412699,
+  "plan_with_index": [
+   "SEARCH users USING COVERING INDEX users_email (email=?)"
+  ],
+  "seconds_with_index": 3.657450000901008e-05,
+  "table_pages": 7893,
+  "index_levels": 3,
+  "index_root_keys": 68
+ }
+}

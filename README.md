@@ -15,6 +15,9 @@ you can see them, and timed so you can feel the difference.
 | `heaps.py` | [Heaps and priority queues: the array trick behind heapq](https://chekh.dev/writing/heaps-and-priority-queues-the-array-trick-behind-heapq/) | A binary heap traced as it pushes and pops, its comparisons counted two ways, and four ways to find the ten largest of a million numbers (about 1 min) |
 | `shortest_paths.py` | [Dijkstra and A*, traced on a weighted grid](https://chekh.dev/writing/dijkstra-and-a-star-traced-on-a-weighted-grid/) | BFS, Dijkstra, A* and greedy search traced on a map with forest, run on 200 random maps, and Dijkstra timed with and without a heap (about 1 min) |
 | `dynamic_programming.py` | [Dynamic programming: from recursion to a table](https://chekh.dev/writing/dynamic-programming-from-recursion-to-a-table/) | Coin change and edit distance, each as a plain recursion, with a cache, and as a table (about 5 min, most of it the plain recursions) |
+| `arrays_and_lists.py` | [Arrays and linked lists: what "fast" depends on](https://chekh.dev/writing/arrays-and-linked-lists-what-fast-depends-on/) | A linked list timed against `list` and `deque` on four jobs, the memory each uses per item, how a list grows, and one sum in two memory orders (about 2 min) |
+| `stacks_and_queues.py` | [Stacks and queues, and the call stack every program runs on](https://chekh.dev/writing/stacks-and-queues-and-the-call-stack/) | A bracket checker and a postfix calculator traced, four queues timed, and a structure 100,000 levels deep walked by recursion and by a loop with a stack (about 1 min) |
+| `trees.py` | [Binary search trees, balance, and why databases use B-trees](https://chekh.dev/writing/binary-search-trees-balance-and-why-databases-use-b-trees/) | A plain binary search tree, an AVL tree and a B-tree measured up to a million keys, then SQLite with and without an index, its depth read from the database file (about 2 min) |
 
 ## Run it
 
@@ -37,12 +40,14 @@ times as long on any computer.
 ## What is in here
 
 - `binary_search.py`, `sorting.py`, `hash_table.py`, `recursion.py`, `graphs.py`,
-  `heaps.py`, `shortest_paths.py`, `dynamic_programming.py` — the implementations, with
-  the traces and diagrams they draw
+  `heaps.py`, `shortest_paths.py`, `dynamic_programming.py`, `arrays_and_lists.py`,
+  `stacks_and_queues.py`, `trees.py` — the implementations, with the traces and
+  diagrams they draw
 - `big_o.py` — the timing harness for the complexity article
 - `tests/` — pytest suites: each algorithm against a plain scan, `sorted()`, `heapq`, a
-  real `dict`, every possible path, Bellman-Ford or brute force, plus one test per
-  classic bug that shows how it fails
+  real `dict`, a Python list or set, Python's own arithmetic, every possible path,
+  Bellman-Ford or brute force, plus one test per classic bug that shows how it fails,
+  and the SQLite depth reader against real database files
 - `_common.py` — shared setup: fonts, chart style, a careful timer, where charts go
 - `paper.mplstyle`, `fonts/` — the site's chart style and typeface (Lora, SIL Open Font
   License)
@@ -66,6 +71,14 @@ times as long on any computer.
   `a_star` by 2 and watch it expand fewer cells and sometimes miss the cheapest path
 - `dynamic_programming.py` — change `COINS` and see for which amounts the greedy answer
   goes wrong; the tests check every version against brute force
+- `arrays_and_lists.py` — change `n` in `memory_order` and find how small the data must
+  be before the shuffled order stops costing anything
+- `stacks_and_queues.py` — add an operator such as `%` to `PRECEDENCE`, `APPLY` and
+  `TOKEN`; find the deepest nesting `total_recursive` survives, and work out why it is
+  not 1,000
+- `trees.py` — change the `t` passed to `BTree` and watch the height and the nodes
+  visited change; raise `rows` in `sqlite_demo` and find where the index grows a fourth
+  level
 
 ## Licence
 
